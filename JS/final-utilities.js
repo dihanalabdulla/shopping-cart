@@ -96,3 +96,29 @@ function getMinusPriceById(itemPriceId, itemId, itemPrice) {
 
 
 // }
+
+function setSubTotalPriceItem(itemAId, itemBId, vatAmount) {
+    const itemA = document.getElementById(itemAId)
+    const itemAString = itemA.innerText
+    const itemAnumber = parseFloat(itemAString)
+
+    const itemB = document.getElementById(itemBId)
+    const itemBString = itemB.innerText
+    const itemBnumber = parseFloat(itemBString)
+    const subTotal = itemAnumber + itemBnumber
+
+    const subTotalFieldText = document.getElementById('subtotal')
+    subTotalFieldText.innerText = subTotal
+
+    const vatNumber = vatAmount
+    const totalVat = (vatNumber * subTotal) / 100;
+
+    const vatField = document.getElementById('vat')
+    vatField.innerText = totalVat
+
+    const payableAmountField = document.getElementById('total-payable')
+    const payableAmount = totalVat + subTotal;
+    payableAmountField.innerText = payableAmount
+
+}
+
